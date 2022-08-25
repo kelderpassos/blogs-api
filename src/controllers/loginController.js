@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 const validateBody = (body) =>
   Joi.object({
@@ -17,8 +17,6 @@ module.exports = {
 
     if (error) return next(error);
 
-    const { email, password } = req.body;
-
-
+    // const { email, password } = req.body;
   },
 };
