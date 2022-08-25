@@ -12,14 +12,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      contente: {
+      content: {
         allowNull: false,
         type: Sequelize.STRING
       },
       userId: {
         allowNull: false,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id',
         },
         type: Sequelize.INTEGER
@@ -28,7 +28,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      update: {
+      updated: {
         allowNull: false,
         type: Sequelize.DATE
       },
