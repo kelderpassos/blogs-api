@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const userService = require('../services');
+// const userService = require('../services');
 
 const validateBody = (body) =>
   Joi.object({
@@ -20,4 +20,6 @@ const validateBody = (body) =>
 module.exports = async (req, res, next) => {
   const { error } = validateBody(req.body);
   if (error) return next(error);
+
+  // const users = await userService.getAllUsers();
 };

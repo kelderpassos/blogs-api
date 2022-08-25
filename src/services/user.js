@@ -1,3 +1,3 @@
 module.exports = {
-  getAllUsers: async (req, res) => {},
+  getAllUsers: async () => {},
 };
