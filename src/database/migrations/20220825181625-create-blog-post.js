@@ -18,6 +18,10 @@ module.exports = {
       },
       userId: {
         allowNull: false,
+        references: {
+          model: 'User',
+          key: 'id',
+        },
         type: Sequelize.INTEGER
       },
       published: {
