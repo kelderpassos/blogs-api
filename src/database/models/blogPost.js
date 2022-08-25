@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     title: DataTypes.STRING,
-    contente: DataTypes.STRING,
+    content: DataTypes.STRING,
     userId: {
       foreignKey: true,
       type: DataTypes.INTEGER,
