@@ -1,5 +1,8 @@
 require('dotenv').config();
-const error = require('./middlewares/error');
+// const error = require('./middlewares/error');
+const {
+  validFields: { verifyRequiredFields, verifyInvalidFields },
+} = require('./middlewares');
 const route = require('./router');
 const app = require('./api');
 
@@ -11,8 +14,8 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.use(error);
+// app.use(middlewares);
 
-app.use('/login', route.login);
+app.use('/login', verifyRequiredFields, verifyInvalidFields, route.login);
 
 app.listen(port, () => console.log('ouvindo porta', port));
