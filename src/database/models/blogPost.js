@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     published: DataTypes.DATE,
-    update: DataTypes.DATE,
+    updated: DataTypes.DATE,
   });
 
   BlogPost.associate = (models) => {
