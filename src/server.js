@@ -2,7 +2,7 @@ require('dotenv').config();
 require('express-async-errors');
 const {
   validFields: { verifyRequiredFields, verifyInvalidFields },
-  error, auth,
+  error,
 } = require('./middlewares');
 const route = require('./router');
 const app = require('./api');
