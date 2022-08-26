@@ -5,7 +5,6 @@ const config = require('../database/config/config');
 const sequelize = new Sequelize(config.development);
 
 const checkIfCategoryExists = async (id) => {
-  console.log('olavoce');
   const existingPost = await Category.findByPk(id);
   if (!existingPost) throw new Error('400|"categoryIds" not found');
 };
