@@ -7,6 +7,7 @@ module.exports = {
   createNewPost: async (req, res) => {
     const { title, content, categoryIds } = req.body;
     const token = req.headers.authorization;
+    // console.log((req.user.email));
     const payload = jwt.verify(token, JWT_SECRET);
 
     if (!title || !content || !categoryIds) {

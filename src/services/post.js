@@ -16,20 +16,17 @@ module.exports = {
     await Promise.all(categoryIds.map((id) => checkIfCategoryExists(id)));
     const user = await User.findOne({ where: { email: userEmail } });
     const transaction = await sequelize.transaction(async (t) => {
-      const newPost = await BlogPost.create(
-        { title,
+      const newPost = await BlogPost.create({ title,
           content,
           userId: user.id,
           published: new Date(),
           updated: new Date(),
-        }, { transaction: t },
-        );
+        }, { transaction: t });
         const specificIds = categoryIds.map((id) => ({
         postId: newPost.id, categoryId: id,
         }));
-        
         await PostCategory.bulkCreate(specificIds, { transaction: t });
-        return newPost
+        return newPost;
     });
     return transaction;
   },
