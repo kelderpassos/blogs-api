@@ -38,12 +38,19 @@ module.exports = {
   },
   getAllUsers: async (req, res) => {
     const allUsers = await userService.getAllUsers();
-    const noPasswordResponse = allUsers.map(({ id, displayName, email, image }) => ({
-      id, displayName, email, image,
-    }));
-    return res.status(200).json(noPasswordResponse);
+    return res.status(200).json(allUsers);
+  },
+  getUserById: async (req, res) => {
+    const { id } = req.params;
+    const userById = await userService.getUserById(id);
+    if (!userById) throw new Error('404|User does not exist');
+    
+    // try {
+    // } catch (error) {
+    //   error.message = '404|User does not exist';
+    //   return error;
+    // }
+    
+    return res.status(200).json(userById);
   },
 };
-
-// const user = { id, displayName, email, image };
-//       return user;
