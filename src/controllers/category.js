@@ -10,4 +10,8 @@ module.exports = {
 
     return res.status(201).json(newCategory);
   },
+  getAllCategories: async (_req, res) => {
+    const allCategories = await categoryService.getAllCategories();
+    return res.status(200).json(allCategories);
+  }, 
 };
