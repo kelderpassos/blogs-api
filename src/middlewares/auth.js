@@ -10,6 +10,7 @@ module.exports = async (req, _res, next) => {
   // if (!payload) throw new Error('401|Expired or invalid token');
   // req.user = payload;
   // return next();
+  
   try {
     const payload = jwt.verify(token, JWT_SECRET);
     req.user = payload;
