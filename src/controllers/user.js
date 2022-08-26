@@ -43,8 +43,9 @@ module.exports = {
   getUserById: async (req, res) => {
     const { id } = req.params;
     const userById = await userService.getUserById(id);
-    if (!userById) throw new Error('404|User does not exist');
     
+    if (!userById) throw new Error('404|User does not exist');
+
     // try {
     // } catch (error) {
     //   error.message = '404|User does not exist';

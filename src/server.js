@@ -16,7 +16,7 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/login', verifyRequiredFields, verifyInvalidFields, route.login);
-app.use('/user', auth, route.user);
+app.use('/user', route.user);
 
 app.use(error);
 app.listen(port, () => console.log('ouvindo porta', port));
