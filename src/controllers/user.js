@@ -19,23 +19,31 @@ const validateBody = (body) =>
     image: Joi.string().allow(),
   }).validate(body);
 
-module.exports = async (req, res) => {
-  const { error } = validateBody(req.body);
+module.exports = {
+  createNewUser: async (req, res) => {
+    const { displayName, email, password, image } = req.body;
 
-  if (error) throw error;
+    const { error } = validateBody(req.body);
+    if (error) throw error;
 
-  const { displayName, email, password, image } = req.body;
+    const existingUser = await userService.getUserByEmail(email);
+    if (existingUser) throw new Error('409|User already registered');
 
-  const existingUser = await userService.getUserByEmail(email);
+    await userService.createUser({ displayName, email, password, image });
 
-  if (existingUser) {
-    return res.status(409).json({ message: 'User already registered' });
-  }
+    const payload = { displayName, email, image };
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
 
-  await userService.createUser({ displayName, email, password, image });
-
-  const payload = { displayName, email, image };
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
-
-  return res.status(201).json({ token });
+    return res.status(201).json({ token });
+  },
+  getAllUsers: async (req, res) => {
+    const allUsers = await userService.getAllUsers();
+    const noPasswordResponse = allUsers.map(({ id, displayName, email, image }) => ({
+      id, displayName, email, image,
+    }));
+    return res.status(200).json(noPasswordResponse);
+  },
 };
+
+// const user = { id, displayName, email, image };
+//       return user;
