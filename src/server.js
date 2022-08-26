@@ -4,7 +4,7 @@ const {
   validFields: { verifyRequiredFields, verifyInvalidFields },
   error,
 } = require('./middlewares');
-const route = require('./router');
+const routes = require('./router');
 const app = require('./api');
 
 // não remova a variável `API_PORT` ou o `listen`
@@ -15,8 +15,9 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.use('/login', verifyRequiredFields, verifyInvalidFields, route.login);
-app.use('/user', route.user);
+app.use('/login', verifyRequiredFields, verifyInvalidFields, routes.login);
+app.use('/user', routes.user);
+app.use('/categories', routes.category);
 
 app.use(error);
 app.listen(port, () => console.log('ouvindo porta', port));

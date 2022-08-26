@@ -30,7 +30,3 @@ module.exports = {
     return noPasswordResponse;
   },
 };
-
-// const { id, displayName, email, image } = await User.findOne({ where: { userId } });
-//     const noPasswordResponse = { id, displayName, email, image };
-//     return noPasswordResponse;
