@@ -29,9 +29,13 @@ module.exports = {
     });
     return transaction;
   },
-  getAllPosts: () => BlogPost
+  getAllPosts: async () => BlogPost
     .findAll({ include: [
       { model: User, as: 'user', attributes: { exclude: 'password' } }, 
       { model: Category, as: 'categories' },
     ] }),
+  getById: async (pk) => BlogPost.findByPk(pk, { include: [
+    { model: User, as: 'user', attributes: { exclude: 'password' } }, 
+    { model: Category, as: 'categories' },
+  ] }),
 };

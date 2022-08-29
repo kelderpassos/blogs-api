@@ -21,4 +21,12 @@ module.exports = {
     const allPosts = await postService.getAllPosts();
     return res.status(200).json(allPosts);
   },
+  getById: async (req, res) => {
+    const { id } = req.params;
+    const postById = await postService.getById(id);
+
+    if (!postById) throw new Error('404|Post does not exist');
+
+    return res.status(200).json(postById);      
+  },
 };
