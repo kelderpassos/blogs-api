@@ -51,7 +51,9 @@ module.exports = {
     const { id } = req.params;
 
     const expecificPost = await postService.getById(id);
-    console.log(expecificPost.user.email);
+
+    if (!expecificPost) throw new Error('404|Post does not exist');
+
     if (req.user.email !== expecificPost.user.email) {
       throw new Error('401|Unauthorized user');
     }
