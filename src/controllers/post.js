@@ -61,4 +61,10 @@ module.exports = {
     await postService.deleteById(id);
     return res.status(204).end();
   },
+  getPostBySearchTerm: async (req, res) => {
+    const { q } = req.query;
+    const postByTerm = await postService.getPostBySearchTerm(q);
+    
+    return res.status(200).json(postByTerm);
+  },
 };

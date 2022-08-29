@@ -52,7 +52,22 @@ module.exports = {
     return updatedPost;
   },
   deleteById: async (id) => {
-    checkIfBlogPostExists(id);
+    await checkIfBlogPostExists(id);
     await BlogPost.destroy({ where: { id } });
+  },
+  getPostBySearchTerm: async (term) => {
+    const { Op } = Sequelize;
+    const query = `%${term}%`;
+
+    if (term === '') return BlogPost.findAll();
+   
+    const postByTerm = await BlogPost
+      .findAll({ where: { title: { [Op.like]: query } } }, { include: [
+        { model: User, as: 'user', attributes: { exclude: 'password' } }, 
+        { model: Category, as: 'categories' },
+      ] });
+
+    console.log(postByTerm, 'service');
+    return postByTerm;
   },
 };
