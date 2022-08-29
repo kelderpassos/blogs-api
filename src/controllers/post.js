@@ -41,11 +41,22 @@ module.exports = {
     }    
 
     const updatedPost = await postService.updateById(id, { title, content });
-    console.log(updatedPost.user.email);
-    console.log(req.user.email);
+    
     if (req.user.email !== updatedPost.user.email) {
       throw new Error('401|Unauthorized user');
     }
     return res.status(200).json(updatedPost);
+  },
+  deleteById: async (req, res) => {
+    const { id } = req.params;
+
+    const expecificPost = await postService.getById(id);
+    console.log(expecificPost.user.email);
+    if (req.user.email !== expecificPost.user.email) {
+      throw new Error('401|Unauthorized user');
+    }
+
+    await postService.deleteById(id);
+    return res.status(204).end();
   },
 };

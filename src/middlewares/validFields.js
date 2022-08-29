@@ -1,10 +1,11 @@
+const { userService } = require('../services');
+
 module.exports = {
   verifyInvalidFields: async (req, res, next) => {
-    const { email, password } = req.body;
-    const validUser = email === 'lewishamilton@gmail.com' && password === '123456';
-    if (!email || !password || !validUser) {
-      return res.status(400).json({ message: 'Invalid fields' });
-    }
+    const { email } = req.body;   
+
+    const existingUser = await userService.getUserByEmail(email);
+    if (!existingUser) throw new Error('400|Invalid fields');
 
     next();
   },
