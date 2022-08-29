@@ -38,4 +38,13 @@ module.exports = {
     { model: User, as: 'user', attributes: { exclude: 'password' } }, 
     { model: Category, as: 'categories' },
   ] }),
+  updateById: async (id, { title, content }) => {
+
+    await BlogPost.update({ title, content }, { where: { id } });
+    const updatedPost = await BlogPost.findByPk(id, { include: [
+      { model: User, as: 'user', attributes: { exclude: 'password' } }, 
+      { model: Category, as: 'categories' },
+    ] });
+    return updatedPost;
+  },
 };
