@@ -17,4 +17,8 @@ module.exports = {
 
     return res.status(201).json(createdPost);
   },
+  getAllPosts: async (_req, res) => {
+    const allPosts = await postService.getAllPosts();
+    return res.status(200).json(allPosts);
+  },
 };
