@@ -57,15 +57,22 @@ module.exports = {
   },
   getPostBySearchTerm: async (term) => {
     const { Op } = Sequelize;
-    const query = `%${term}%`;
+    // const query = `%${term}%`;
 
-    if (term === '') return BlogPost.findAll();
+    if (term === '') {
+      return BlogPost.findAll({ include: [
+       { model: User, as: 'user', attributes: { exclude: 'password' } }, 
+       { model: Category, as: 'categories' },
+     ] });
+    }
    
-    const postByTerm = await BlogPost
-      .findAll({ where: { title: { [Op.like]: query } } }, { include: [
-        { model: User, as: 'user', attributes: { exclude: 'password' } }, 
-        { model: Category, as: 'categories' },
-      ] });
+    const postByTerm = await BlogPost.findAll({ where: { [Op.or]: [{ title: term }, { content: term }],
+      },
+      include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+    });
 
     console.log(postByTerm, 'service');
     return postByTerm;
