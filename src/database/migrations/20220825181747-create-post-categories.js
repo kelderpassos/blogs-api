@@ -15,7 +15,6 @@ module.exports = {
           model: 'Categories',
           key: 'id',
         },
-        onDelete: 'CASCADE',
         type: Sequelize.INTEGER
       },
     });

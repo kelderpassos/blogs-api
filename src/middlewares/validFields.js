@@ -2,9 +2,9 @@ const { userService } = require('../services');
 
 module.exports = {
   verifyInvalidFields: async (req, res, next) => {
-    const { email } = req.body;   
-
+    const { email } = req.body;
     const existingUser = await userService.getUserByEmail(email);
+    
     if (!existingUser) throw new Error('400|Invalid fields');
 
     next();

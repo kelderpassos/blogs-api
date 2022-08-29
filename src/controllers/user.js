@@ -54,4 +54,12 @@ module.exports = {
     
     return res.status(200).json(userById);
   },
+  deleteUserByToken: async (req, res) => {
+    const { authorization } = req.headers;
+
+    const decodedToken = jwt.verify(authorization, JWT_SECRET);
+    await userService.deleteUserByToken(decodedToken.email);
+
+    return res.status(204).end();
+  },
 };

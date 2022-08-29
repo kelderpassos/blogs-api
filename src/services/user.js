@@ -3,9 +3,14 @@ const { User } = require('../database/models');
 module.exports = {
   getAllUsers: async () => {
     const allUsers = await User.findAll();
-    const noPasswordResponse = allUsers.map(({ id, displayName, email, image }) => ({
-      id, displayName, email, image,
-    }));
+    const noPasswordResponse = allUsers.map(
+      ({ id, displayName, email, image }) => ({
+        id,
+        displayName,
+        email,
+        image,
+      }),
+    );
     return noPasswordResponse;
   },
   createUser: async (info) => {
@@ -21,7 +26,7 @@ module.exports = {
 
     if (!userById) return null;
 
-    const noPasswordResponse = { 
+    const noPasswordResponse = {
       id: userById.id,
       displayName: userById.displayName,
       email: userById.email,
@@ -29,4 +34,5 @@ module.exports = {
     };
     return noPasswordResponse;
   },
+  deleteUserByToken: async (email) => User.destroy({ where: { email } }),
 };
