@@ -133,12 +133,6 @@ npm install && npm run prestart && npm run seed
 npm start
 ```
 
-- Run unit tests:
-
-```
-npm run test:mocha
-```
-
 <br />
 
 ## Endpoints
