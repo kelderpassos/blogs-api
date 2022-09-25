@@ -10,11 +10,11 @@ Construir uma API para gerenciar o banco de dados de um blog incluindo:
 - autenticação de usuário no login com JWT;
 - CRUD de usuários, postagens e categorias;
 - gerenciamento do banco de dados com o ORM Sequelize;
-- arquitetura de rotas e middlewares para a possibilidade de escalamento da aplicação;
 
 ## Desafios
 - Aprender e me acostumar com a cli do Sequelize e configuração das migrations e models;
 - Aprender e usar mecanismos e ferramentas importantes que fazem parte de aplicações backend como autenticação (JWT) e validações com Joi;
+- Arquitetar a aplicação, criando rotas e middlewares, tendo em vista sua escalabilidade;
 
 ## Observações
 
@@ -99,12 +99,13 @@ To build an API to manage the database of a blog including:
 - user's authentication on login with JWT;
 - user, post, categories CRUD;
 - the management of the database with ORM Sequelize;
-- an architecture with routes and middlewares aiming the scalability of the application;
+  
   <br />
 
 ## Challenges
 - Learn and get used to Sequelize's cli and configuration of its migrations and models;
 - Learn and use important mechanisms and tools part of backend applications like authentication (JWT) and validations with Joi;
+- Architecture the application, with routes and middlewares, aiming its scalability
 
 ## Observations
 
