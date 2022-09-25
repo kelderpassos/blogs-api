@@ -1,4 +1,4 @@
-# Store Manager
+# Blogs-api
 
 <details> 
 <summary>:brazil: Versão em Português</summary>
