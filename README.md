@@ -12,6 +12,10 @@ Construir uma API para gerenciar o banco de dados de um blog incluindo:
 - gerenciamento do banco de dados com o ORM Sequelize;
 - arquitetura de rotas e middlewares para a possibilidade de escalamento da aplicação;
 
+## Desafios
+- Aprender e me acostumar com a cli do Sequelize e configuração das migrations e models;
+- Aprender e usar mecanismos e ferramentas importantes que fazem parte de aplicações backend como autenticação (JWT) e validações com Joi;
+
 ## Observações
 
 Essa aplicação não usa recursos armazenáveis em cache, então ainda não é uma api do tipo RESTful. <br />
@@ -98,9 +102,9 @@ To build an API to manage the database of a blog including:
 - an architecture with routes and middlewares aiming the scalability of the application;
   <br />
 
-## Observações
-
-Essa aplicação não usa recursos armazenáveis em cache, então ainda não é uma api do tipo RESTful. <br />
+## Challenges
+- Learn and get used to Sequelize's cli and configuration of its migrations and models;
+- Learn and use important mechanisms and tools part of backend applications like authentication (JWT) and validations with Joi;
 
 ## Observations
 
